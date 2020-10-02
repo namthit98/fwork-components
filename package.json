@@ -1,0 +1,33 @@
+{
+  "name": "package-test",
+  "version": "1.0.0",
+  "main": "dist/package-test.js",
+  "module": "dist/esm/",
+  "types": "dist/esm/types",
+  "sideEffects": false,
+  "license": "MIT",
+  "author": "NamTH47",
+  "scripts": {
+    "build:prod": "NODE_ENV=production webpack --mode production",
+    "build:esm": "tsc -m esnext",
+    "build": "yarn build:prod && yarn build:esm"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.50",
+    "@types/styled-components": "^5.1.3",
+    "css-loader": "^4.3.0",
+    "mini-css-extract-plugin": "^0.11.3",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.4",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.0.3",
+    "typescript-transform-paths": "^2.0.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-table": "^7.5.1",
+    "styled-components": "^5.2.0"
+  }
+}
