@@ -2,9 +2,10 @@ const path = require("path");
 const webpack = require("webpack");
 const pkg = require("./package.json");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const nodeExternals = require("webpack-node-externals");
 
 const isProduction = process.env.NODE_ENV === "production";
-const isDevServer = process.env.DEV_SERVER === 'true';
+const isDevServer = process.env.DEV_SERVER === "true";
 const FILENAME = pkg.name + (isProduction ? ".min" : "");
 
 const BANNER = [
@@ -15,7 +16,7 @@ const BANNER = [
 ].join("\n");
 
 const config = {
-  entry: ['./src/styles/index.css', "./src/index.ts"],
+  entry: ["./src/styles/index.css", "./src/index.ts"],
   output: {
     path: path.join(__dirname, "dist"),
     filename: FILENAME + ".js",
@@ -49,12 +50,10 @@ const config = {
       entryOnly: true,
     }),
     new MiniCssExtractPlugin({
-      filename: `${FILENAME}.css`
+      filename: `${FILENAME}.css`,
     }),
   ],
-  externals: {
-    react: "React",
-  },
+  externals: [nodeExternals()],
   resolve: {
     extensions: [".ts", ".tsx"],
     alias: {
